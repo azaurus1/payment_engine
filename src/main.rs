@@ -1,3 +1,4 @@
+use std::collections::VecDeque;
 use std::error::Error;
 use std::ffi::OsString;
 use std::io;
@@ -97,7 +98,7 @@ fn run() -> Result<(), Box<dyn Error>>{
     let mut last_tx:u32 = 0;
     let mut disputed_transactions = Vec::<u32>::new();
     // last 500 non-dispute transactions stored in hashmap
-    let mut previous_transactions = HashMap::<u32, f64>::with_capacity(500);
+    let mut previous_transactions = HashMap::<u32, f64>::new();
     for result in rdr.deserialize(){
         let record: Record = result?;
         key = record.client;
@@ -113,9 +114,9 @@ fn run() -> Result<(), Box<dyn Error>>{
         if !(current_state.contains_key(&key)){
             let mut state = State {
                 client:record.client,
-                available:0.0,
-                held:0.0,
-                total:0.0,
+                available:0.0000,
+                held:0.0000,
+                total:0.0000,
                 locked:false
             };
             match record.r#type.as_str() {
