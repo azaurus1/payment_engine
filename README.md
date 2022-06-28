@@ -2,7 +2,7 @@
 
 run with "cargo run -- transactions.csv > accounts.csv"
 
-### Notes:###
+### Notes: ###
 
 Handles:
 * Deposits
