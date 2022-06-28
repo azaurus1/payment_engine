@@ -2,7 +2,7 @@
 
 run with "cargo run -- transactions.csv > accounts.csv"
 
-Notes:
+### Notes:###
 
 Handles:
 * Deposits
@@ -17,7 +17,7 @@ Errors in the csv are handled via serde, empty fields are deserialised with csv:
 
 It is possible to change the reader from the file to stdin, which would allow for the data to be streamed from TCP streams.
 
-What could be improved or some issues:
+### What could be improved or some existing issues: ###
 * Using the ATM assumption, only a certain amount of previous transactions would be kept and this is currently not implemented in the code, ideally a queue of x capacity, and every new item at capacity will pop off the oldest transaction.
 * Unit-testing, there are no unit tests implemented, the run function could be improved so that unit tests with different missing or incorrect record fields can be tested with "cargo test" 
 
